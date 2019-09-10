@@ -1,0 +1,125 @@
+<!doctype html >
+<html lang="en">
+<head>
+    <title>Message Filter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <meta charset="utf-8">
+    <style>
+        table
+        {
+            margin-top:25px;
+	        border:10px solid white;
+         }
+        td
+        {
+            border:20px solid white;
+            margin:20px;
+        }
+        .mybtn
+        {
+            text-align:center;
+            width:100%;
+            height:120px;
+            border-radius: 30px;
+        }
+        #footer
+        {
+            position: fixed;
+            bottom: 0px;
+            color: #777777;
+            text-align: center;
+            width: 100%;
+        }
+        #return
+        {
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+    <script>
+    $(document).ready(function(){
+        $("#return").hide();
+        $("#num0").click(function(){
+           window.android.readSMS();
+        });
+        $("#return").click(function(){
+           $("#return").hide();
+           $("#choose").show();
+           $("#Msg").hide();
+        });
+    });
+
+    function show(data)
+    {
+       $("#Msg").empty();
+       $("#choose").hide();
+       $("#return").show();
+       var data0 = JSON.parse(data);
+       for (var i=0;i<data0.length;i++)
+       {
+           var $head=$("<br/><h3>"+data0[i]["num"]+"</h3>");
+           $("#Msg").append($head);
+           var $msg=$("<p>"+data0[i]["message"]+"</p>");
+           $("#Msg").append($msg);
+       }
+       $("#Msg").show();
+    }
+    </script>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>Message Filter</h1>
+    <p>试用</p>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">导航</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">链接1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">链接2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">链接3</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" align='center' id="choose">
+    <table width="100%">
+        <tr>
+            <td><button type="button" class="btn btn-dark mybtn" id="num0">0</button></td>
+            <td><button type="button" class="btn btn-dark mybtn">1</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="btn btn-dark mybtn">2</button></td>
+            <td><button type="button" class="btn btn-dark mybtn">3</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="btn btn-dark mybtn">4</button></td>
+            <td><button type="button" class="btn btn-dark mybtn">5</button></td>
+        </tr>
+    </table>
+</div>
+
+<div id="Msg">
+</div>
+
+
+<div id="footer">
+    <button type="button" class="btn btn-default" id="return">返回主页</button>
+    <p>使用条款和隐私条款。版权所有，保留一切权利。</p>
+</div>
+</body>
+</html>
