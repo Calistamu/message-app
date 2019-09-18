@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 String result="";
                 BufferedReader reader = null;
                 try {
-                    URL url = new URL("http://192.168.1.9:5001");
+                    URL url = new URL("http://192.168.1.15:5001");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
