@@ -195,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
     public void showMessage()
     {
         String call = "javascript:show('" + data  + "')";
-        Log.i("Callstring",call);
         webView.loadUrl(call);
     }
 }

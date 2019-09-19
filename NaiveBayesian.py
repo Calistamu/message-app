@@ -48,6 +48,12 @@ DF：逆向文件频率。有些词可能在文本中频繁出现，但并不重
 IDF(w)=log_e(语料库的总文档数)/(语料库中词w出现的文档数)
 综合参数：IF-IDF=IF*IDF
 将文本数据转化为特征向量后，还要将其转化为tf-idf矩阵，TfidfTransformer()方法就是为了这一步的。
+
+CountVectorizer：
+    只考虑词汇在文本中出现的频率
+TfidfVectorizer：
+    除了考量某词汇在文本出现的频率，还关注包含这个词汇的所有文本的数量
+    能够削减高频没有意义的词汇出现带来的影响, 挖掘更有意义的特征
 '''
 tfidf_transformer = TfidfTransformer()
 X_train_tfidf = tfidf_transformer.fit_transform(X_train_termcounts) 
