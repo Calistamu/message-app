@@ -7,8 +7,8 @@
 
 ## 当前进度
 1. 在Android Studio中，用WebView接口实现软件界面（AVD模拟器）显示html页面；
-2. 用Android Studio中HttpClient API接口实现前端与后端服务器的链接；
-    ! [前后端链接](image\1.png)
+2. 用Android Studio中HttpClient API接口实现前端与后端服务器的链接；  
+![前后端链接](image/1.png)
 3. 点击页面按钮读取全部手机短信，短信数据从前端传到后端，等待处理；
 4. 后端（Python Flask）接收短信数据，进行垃圾短信筛选，返回Json数据给前端：
     + 后端使用scikit-learn模块（数据挖掘和数据分析工具），通过其朴素贝叶斯算法API对短信数据进行垃圾短信的识别：
@@ -20,8 +20,9 @@
             + TfidfVectorizer()：除了考量某词汇在文本出现的频率，还关注包含这个词汇的所有文本的数量。能够削减高频没有意义的词汇出现带来的影响, 挖掘更有意义的特征
         + 建立朴素贝叶斯分类器MultinomialNB()并进行训练
         + 利用测试集数据评估分类器
-5. 前端通过WebView与JS交互，将垃圾信息数据显示在软件页面上；
-    ! [前端与html数据交互](image\2.png) 图中通过javascript:将data数据传输到html里的show()函数
+5. 前端通过WebView与JS交互，将垃圾信息数据显示在软件页面上:  
+    ![前端与html数据交互](image/2.png)   
+    图中通过javascript:将data数据传输到html里的show()函数
 
 
 ## 问题与思考
